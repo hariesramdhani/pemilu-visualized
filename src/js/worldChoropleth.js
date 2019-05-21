@@ -74,7 +74,6 @@ export const worldChoropleth = (id, filename, datafile) => {
         
         let countryName = data[i]["location"];
         countryName = countryName.split(", ")[1].split(" (")[0];
-        console.log(countryName);
 
         // ELECTION RESULT DATA STARTS HERE
 
