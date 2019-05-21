@@ -80,12 +80,12 @@ export const indonesiaChoropleth = (id, filename, datafile) => {
         // ELECTION RESULT DATA STARTS HERE
 
         // The amount of votes that the 1st candidate received
-        let candidateOne = parseFloat(data[i]["jokomaruf"]);
+        let candidateOne = parseFloat(data[i]["jokomaruf"].replace(/\./g, ""));
         candidateOneTotal += candidateOne;
         allTotal += candidateOne;
 
         // The amount of votes that the 2nd candidate received
-        let candidateTwo = parseFloat(data[i]["prabowosandi"]);
+        let candidateTwo = parseFloat(data[i]["prabowosandi"].replace(/\./g, ""));
         candidateTwoTotal += candidateTwo;
         allTotal += candidateTwo;
 
