@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Google Analytics -->
+    <script>
+        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+        ga('create', 'UA-136102323-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Pemilu Visualized</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <meta name="author" content="Haries Ramdhani">
+    <meta name="description" content="A data visualization of the result of Indonesia's recent election built using D3.js and data from KPU">
+    <link rel="shortcut icon" type="image/png" href="src/assets/img/favicon.png" />
+
+    <meta property="og:image" content="https://raw.githubusercontent.com/hariesramdhani/pemilu-visualized/master/src/assets/img/twitter_card.png">
+    <meta property="og:description" content="A data visualization of the result of Indonesia's recent election built using D3.js and data from KPU">
+    <meta property="og:title" content="Pemilu Visualized">
+
+    <!--Twitter-->
+    <meta name="twitter:title" content="Pemilu Visualized">
+    <meta name="twitter:description" content="A data visualization of the result of Indonesia's recent election built using D3.js and data from KPU">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/hariesramdhani/pemilu-visualized/master/src/assets/img/twitter_card.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="src/css/main.css">
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="src/assets/scripts/d3.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+
+</head>
+<body>
+    <div class="container" style="margin-bottom: 30px;">
+        <div class="ballot-container">
+            <img src="src/assets/img/ballot_box.png" style="width: 200px; padding: 0 40px 20px 40px;">
+            <div class="ballot-description">
+                <h1 style="font-size: 75px;" id="total-votes">Memuat...</h1>
+                <p style="font-size: 25px; font-weight: bold;">SUARA</p>
+                <p style="font-size: 15px;">Terkumpul <b>750.479</b> dari <b>813.350</b> TPS (92.27%)</p>
+                <p>Pembaruan terakhir pada 21 May 2019 09:15:06</p>
+                <div id="share-buttons" style="display: flex; justify-content: center; align-items: center;"> 
+                    <p style="font-weight: bold;">BAGIKAN KE</p>
+                    <a href="https://www.facebook.com/sharer.php?u=https://hariesramdhani.github.io/pemilu-visualized" target="_blank"><img src="src/assets/img/share/facebook.png" alt="Facebook" /></a>
+
+                    <a href="https://twitter.com/share?url=https://hariesramdhani.github.io/pemilu-visualized&text=Pemilu Visualized by @harieesss" target="_blank"><img src="src/assets/img/share/twitter.png" alt="Twitter" /></a>
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container" style="margin-bottom: 30px;">
+        <div class="button president-color" style="background-color: #99AE8C; color: black;" id="presidential-election-dom"><b>DOMESTIK</b></br><span style="font-size: 14px;">PRESIDEN</span></div>
+        <div class="button president-color" id="presidential-election-overseas"><b>LUAR NEGERI</b></br><span style="font-size: 14px;">PRESIDEN</span></div>
+    </div>
+
+    <div class="container" id="president">
+        <div class="vote-container">
+            <img src="src/assets/img/jokowi_maruf.png" style="width: 200px;">
+            <div class="vote-description">
+                <h3>JOKOWI-MA'RUF</h3>
+                <h1 id="jokomaruf-vote-percentage">0%</h1>
+                <h3 style="font-weight: normal;">(<span id="jokomaruf-vote">0</span>)</h3>
+                <p>Menang di <span id="jokomaruf-wins">0</span></p>
+            </div>
+        </div>
+        <div class="vote-container">
+            <div class="vote-description">
+                <h3>PRABOWO-SANDI</h3>
+                <h1 id="prabowosandi-vote-percentage">0%</h1>
+                <h3 style="font-weight: normal;">(<span id="prabowosandi-vote">0</span>)</h3>
+                <p>Menang di <span id="prabowosandi-wins">0</span></p>
+            </div>
+            <img src="src/assets/img/prabowo_sandi.png" style="width: 200px;">
+        </div>
+    </div>
+
+    <div class="container" id="legislative">
+    </div>
+    
+    <div id="indonesia-choropleth" style="text-align: center;">
+    </div>
+
+    <div id="world-choropleth" style="text-align: center;">
+    </div>
+    
+
+    <div class="container">
+        <p text-align: center;">Built using D3.js and data from KPU by <a href="http://twitter.com/harieesss">Haries Ramdhani</a>.<br/>Download the source code on <a href="https://github.com/hariesramdhani/Pemilu-visualized">GitHub</a>.<br/>Send feedback and inquiries to <u><b>hydrolizedmaltose@gmail.com</b></u></p>
+    </div>
+
+    <div id="window-panel">
+    </div>
+
+    <!--IT'S SUPPOSED TO BE THE ERROR MESSAGE-->
+    <!-- <div id="error-message" style="font-size: 30px; position: fixed; top: 25%; left: 25%; width: 50%; height: 50%; color: white; font-weight: bold; background-color: rgba(0, 0, 0, 0.6); display: flex; border-radius: 10px; align-items: center; justify-content: center;">
+        <p style="padding: 20px;">Maaf API Pemilu sedang down/sedang ada perubahan, harap coba lagi nanti. Laporkan bug/error di <a href="https://github.com/hariesramdhani/Pemilu-visualized">sini</a> atau mention @harieesss</p>
+    </div> -->
+            
+    <script type="module" src="src/js/main.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,154 @@
+body {
+    font-family: "Source Sans Pro", sans-serif;
+    text-align: center;
+    background-color: #FFF4BA;
+    padding: 30px 30px 10px 30px;
+}
+
+.container {
+    display: inline-block;
+    width: 1200px; 
+    text-align: center; 
+    margin: 0 auto;
+}
+
+.vote-container {
+    padding: 0 50px;
+    display: inline-block;
+}
+
+.ballot-container {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 30px;
+}
+
+.vote-description {
+    padding: 0 10px;
+    margin: 0px 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.vote-container img {
+    vertical-align: middle;
+}
+
+h1, h3, h4, p {
+    margin: 0px;
+}
+
+#president .vote-container .vote-description h1 {
+    font-size: 50px;
+}
+
+.tooltip {
+    font-family: monospace;
+    font-size: 10pt;
+    color: #000;
+    position: relative;
+    background: rgba(255, 255, 255, 0.8);
+    /* border: 4px solid #BAD9A2; */
+    padding: 10px;
+    border-radius: 8px ;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 160px; 
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+    vertical-align: middle;
+}
+
+a {
+    color: black;
+    font-weight: bold;
+}
+
+#share-buttons img { 
+    width: 35px; 
+    padding: 5px; 
+    border: 0; 
+    display: inline-block; 
+    margin: 0;
+}
+
+#map {
+    text-align: center;
+    margin: 0 auto;
+    width: 1200px;
+    height: 400px;
+}
+
+#window-panel {
+    display: none;
+    justify-content: center; 
+    align-items: center;
+    border-radius: 8px;
+    height: 80%;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    bottom: 10%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+
+}
+
+.city {
+    opacity: 1;
+}
+
+.partai-icon {
+    width: 75px;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.partai-container {
+    padding: 0 30px 20px 0;
+    display: inline-block;
+}
+
+.partai-container img {
+    vertical-align: middle;
+}
+
+.button {
+    display: inline-block;
+    padding: 5px 30px;
+    margin: 0 10px;
+    font-size: 20px;
+    background-color: #DAC6B5;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#legislative {
+    display: none;
+}
+
+#world-choropleth {
+    display: none;
+}
+
+.color-by-button {
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin: 0 8px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.button:hover, .color-by-button:hover {
+    transform: scale(1.05);
+}
+
+.president-color {
+    background-color: #BAD4AA;
+}
+
+.legislative-color {
+    background-color: #D4D4AA;
+}
